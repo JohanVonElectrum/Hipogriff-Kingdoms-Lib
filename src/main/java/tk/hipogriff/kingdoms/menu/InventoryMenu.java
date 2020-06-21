@@ -54,6 +54,7 @@ public class InventoryMenu implements Listener {
 
     public boolean load() {
         inv = plugin.getServer().createInventory(null, 9 * config.getRows(), config.getTitle());
+        config.loadIcons(this);
         List<MenuIcon> icons = config.getIcons();
         if (icons == null) return false;
 

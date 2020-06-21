@@ -1,5 +1,6 @@
 package tk.hipogriff.kingdoms.menu;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -21,6 +22,7 @@ public class MenuIcon {
     private int x, y, count;
 
     public MenuIcon(InventoryMenu menu, String iconName) throws IconOutInventoryException {
+        menu.getPlugin().getLogger().info(ChatColor.AQUA + iconName + " menu icon is loading...");
         if (x < 0 || x >= 9 || y < 0 || y >= menu.getConfig().getRows()) throw new IconOutInventoryException("X: " + x + " Y: " + y + " is NOT a valid position.");
 
         String displayName = Text.getLocatedFormatted(menu.getConfig().getString("icons." + iconName + ".title") , menu.getPlugin().getLang());
