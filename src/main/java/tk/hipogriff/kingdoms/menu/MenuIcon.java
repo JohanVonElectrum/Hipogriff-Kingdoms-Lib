@@ -35,6 +35,8 @@ public class MenuIcon {
         Boolean unbreakable = menu.getConfig().getBoolean("icons." + iconName + ".unbreakable");
         int version = menu.getConfig().getInt("icons." + iconName + ".version");
 
+        Text.parseLore(lore);
+
         meta = getItemStack(count).getItemMeta();
 
         meta.setDisplayName(displayName);
