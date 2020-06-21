@@ -3,6 +3,8 @@ package tk.hipogriff.kingdoms.lang;
 import org.bukkit.ChatColor;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
 
+import java.util.List;
+
 public class Text {
 
     public static String getLocated(String input, Lang lang) {
@@ -37,6 +39,12 @@ public class Text {
 
     public static String getLocatedFormatted(String input, Lang lang) {
         return getFormatted(getLocated(input, lang));
+    }
+
+    public static void parseLore(List<String> lore) {
+        for (int i = 0; i < lore.size(); i++) {
+            lore.set(i, getFormatted(lore.get(i)));
+        }
     }
 
 }

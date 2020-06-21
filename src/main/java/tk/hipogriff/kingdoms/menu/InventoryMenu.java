@@ -95,6 +95,10 @@ public class InventoryMenu implements Listener {
         if (!event.getView().getTitle().equals(config.getTitle())) return;
 
         Player player = (Player) event.getPlayer();
+
+        for (MenuAction action: config.getActions(MenuAction.ActionEvent.CLOSE)) {
+            action.run(player);
+        }
     }
 
 }
