@@ -10,6 +10,7 @@ import tk.hipogriff.kingdoms.menu.MenuConfig;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 public final class HipogriffKingdoms extends JavaPlugin {
 
@@ -71,17 +72,38 @@ public final class HipogriffKingdoms extends JavaPlugin {
         }
     }
 
+    public void loadMenu(File file) {
+        getLogger().info(ChatColor.AQUA + "loading file: " + file.getAbsolutePath());
+        MenuConfig menu = new MenuConfig(file);
+        if (menu.load()) {
+            menus.put(menu.getFile().getName(), new InventoryMenu(menu));
+            getLogger().info(ChatColor.AQUA + menu.getFile().getName() + " menu have been loaded!");
+        } else {
+            getLogger().severe(ChatColor.RED + menu.getFile().getName() + " menu can NOT be loaded!");
+        }
+    }
+
+    public void loadMenu(String menuName) {
+        getLogger().info(ChatColor.AQUA + "loading file: menu/" + menuName + ".yml");
+        MenuConfig menu = new MenuConfig(menuName);
+        if (menu.load()) {
+            menus.put(menu.getFile().getName(), new InventoryMenu(menu));
+            getLogger().info(ChatColor.AQUA + menu.getFile().getName() + " menu have been loaded!");
+        } else {
+            getLogger().severe(ChatColor.RED + menu.getFile().getName() + " menu can NOT be loaded!");
+        }
+    }
+
     public void loadMenus() {
         menus = new HashMap<>();
-        for (File file: new File(getDataFolder(), "menu").listFiles()) {
-            getLogger().info(ChatColor.AQUA + "loading file: " + file.getAbsolutePath());
-            MenuConfig menu = new MenuConfig(file);
-            if (menu.load()) {
-                menus.put(menu.getFile().getName(), new InventoryMenu(menu));
-                getLogger().info(ChatColor.AQUA + menu.getFile().getName() + " menu have been loaded!");
-            } else {
-                getLogger().severe(ChatColor.RED + menu.getFile().getName() + " menu can NOT be loaded!");
-            }
+        File folder = new File(getDataFolder(), "menu");
+        if (!folder.exists()) folder.mkdirs();
+        for (File file: folder.listFiles()) {
+            loadMenu(file);
+        }
+        List<String> defaultMenus = config.getStringList("default.menus");
+        for (String menuName: defaultMenus) {
+            if (!menus.containsKey(menuName + ".yml")) loadMenu(menuName);
         }
     }
 }

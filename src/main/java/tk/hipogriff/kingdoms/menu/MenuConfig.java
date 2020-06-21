@@ -1,10 +1,7 @@
 package tk.hipogriff.kingdoms.menu;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import tk.hipogriff.kingdoms.config.AbstractFile;
 import tk.hipogriff.kingdoms.exception.IconOutInventoryException;
 import tk.hipogriff.kingdoms.lang.Text;
@@ -14,11 +11,12 @@ import tk.hipogriff.kingdoms.utils.EnumUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MenuConfig extends AbstractFile {
 
     private HashMap<MenuAction.ActionEvent, ArrayList<MenuAction>> actions;
-    HashMap<Integer, MenuIcon> icons = new HashMap<>();
+    List<MenuIcon> icons = new ArrayList<>();
 
     public MenuConfig(String name) {
         super("menu/" + name + ".yml");
@@ -28,7 +26,7 @@ public class MenuConfig extends AbstractFile {
         super(file);
     }
 
-    public HashMap<Integer, MenuIcon> getIcons() {
+    public List<MenuIcon> getIcons() {
         return icons;
     }
 
@@ -83,7 +81,7 @@ public class MenuConfig extends AbstractFile {
         for (String iconName: config.getConfigurationSection("icons").getKeys(false)) {
             try {
                 MenuIcon icon = new MenuIcon(menu, iconName);
-                icons.put(icon.getX() + icon.getY() * 9, icon);
+                icons.add(icon);
             } catch (IconOutInventoryException e) {
                 plugin.getLogger().severe(ChatColor.RED + iconName + "in" + getTitle() + " menu can NOT be loaded because: " + e.getMessage());
                 e.printStackTrace();

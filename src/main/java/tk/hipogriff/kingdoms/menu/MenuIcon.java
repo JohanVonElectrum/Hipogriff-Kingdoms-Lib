@@ -1,26 +1,30 @@
 package tk.hipogriff.kingdoms.menu;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tk.hipogriff.kingdoms.exception.IconOutInventoryException;
 import tk.hipogriff.kingdoms.lang.Text;
+import tk.hipogriff.kingdoms.utils.EnumUtils;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MenuIcon {
 
     private InventoryMenu menu;
     private Material material;
-    private MenuIconMeta meta;
+    private ItemMeta meta;
     private int x, y, count;
 
     public MenuIcon(InventoryMenu menu, String iconName) throws IconOutInventoryException {
         if (x < 0 || x >= 9 || y < 0 || y >= menu.getConfig().getRows()) throw new IconOutInventoryException("X: " + x + " Y: " + y + " is NOT a valid position.");
 
         String displayName = Text.getLocatedFormatted(menu.getConfig().getString("icons." + iconName + ".title") , menu.getPlugin().getLang());
-        String localized = "icons." + iconName + ".title";
-        String[] lore = (String[]) menu.getConfig().getStringList("icons." + iconName + ".description").toArray();
+        List<String> lore = menu.getConfig().getStringList("icons." + iconName + ".description");
         setMaterial(menu.getConfig().getString("icons." + iconName + ".item"));
         setX(menu.getConfig().getInt("icons." + iconName + ".x") - 1);
         setY(menu.getConfig().getInt("icons." + iconName + ".y") - 1);
@@ -28,11 +32,34 @@ public class MenuIcon {
         Boolean unbreakable = menu.getConfig().getBoolean("icons." + iconName + ".unbreakable");
         int version = menu.getConfig().getInt("icons." + iconName + ".version");
 
-        setMeta(new MenuIconMeta(displayName, localized, Arrays.asList(lore), null, null, unbreakable, null, version, null, null, null, null, null));
+        meta = getItemStack(count).getItemMeta();
+
+        meta.setDisplayName(displayName);
+        meta.setLore(lore);
+        meta.setUnbreakable(unbreakable);
+
+        List<String> flags = menu.getConfig().getStringList("icons." + iconName + ".flags");
+        if (flags != null && !flags.isEmpty()) {
+            for (String flagID: flags) {
+                ItemFlag flag = (ItemFlag) EnumUtils.stringToEnum(ItemFlag.class, flagID);
+                meta.addItemFlags(flag);
+            }
+        }
+
+        ConfigurationSection enchSect = menu.getConfig().getConfigurationSection("icons." + iconName + ".enchants");
+        if (enchSect != null && enchSect.getKeys(false) != null && !enchSect.getKeys(false).isEmpty()) {
+            for (String enchKey: enchSect.getKeys(false)) {
+                Enchantment enchant = EnumUtils.getEnchantment(enchKey);
+                int level = enchSect.getInt(enchKey);
+                meta.addEnchant(enchant, level, true);
+            }
+        }
     }
 
     public ItemStack getItemStack(int count) {
-        return new ItemStack(material, count);
+        ItemStack itemStack = new ItemStack(material, count > 0 ? count : 1);
+        itemStack.setItemMeta(meta);
+        return itemStack;
     }
 
     public String getDisplayName() {
@@ -63,11 +90,11 @@ public class MenuIcon {
         this.material = Material.getMaterial(materialID.toUpperCase());
     }
 
-    public MenuIconMeta getMeta() {
+    public ItemMeta getMeta() {
         return meta;
     }
 
-    public void setMeta(MenuIconMeta meta) {
+    public void setMeta(ItemMeta meta) {
         this.meta = meta;
     }
 

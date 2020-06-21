@@ -60,7 +60,8 @@ icons:
     pvp:
         item: "iron_sword"
         title: "location.menu.navigation.icons.pvp.title"
-        description: "location.menu.navigation.icons.pvp.description"
+        description: "location.menu.navigation.icons.pvp.lore"
+        flags: ["hide_attributes"]
         x: 5
         y: 5
         click-actions:
@@ -94,9 +95,9 @@ icons:
         title: "location.menu.navigation.icons.bazar.title"
         description: "location.menu.navigation.icons.bazar.description"
         enchants:
-            infinity: 2
+            arrow_infinite: 2
+        flags: ["hide_enchants"]
         x: 9
         y: 6
-        count: 1
         click-actions:
             menu: "bazar"

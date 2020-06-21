@@ -13,6 +13,7 @@ import tk.hipogriff.kingdoms.HipogriffKingdoms;
 import tk.hipogriff.kingdoms.menu.action.MenuAction;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class InventoryMenu implements Listener {
 
@@ -53,11 +54,11 @@ public class InventoryMenu implements Listener {
 
     public boolean load() {
         inv = plugin.getServer().createInventory(null, 9 * config.getRows(), config.getTitle());
-        HashMap<Integer, MenuIcon> icons = config.getIcons();
+        List<MenuIcon> icons = config.getIcons();
         if (icons == null) return false;
 
-        for (int i = 0; i < 9 * config.getRows(); i++) {
-            inv.setItem(i, icons.get(i).getItemStack(config.getIcons().get(i).getCount()));
+        for (MenuIcon icon: icons) {
+            inv.setItem(icon.getX() + icon.getY() * 9, icon.getItemStack(icon.getCount()));
         }
 
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
