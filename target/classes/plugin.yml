@@ -1,0 +1,11 @@
+name: Hipogriff_Kingdoms_Lib
+version: 1.0-SNAPSHOT
+main: tk.hipogriff.kingdoms.HipogriffKingdoms
+api-version: 1.13
+authors: [JohanVonElectrum]
+description: Core del resto de plugins de Hipogriff Kingdoms
+website: hipogriff.tk
+commands:
+    hipogriffKingdoms:
+        aliases: ["hk"]
+        description: "Main command of the Hipogriff Kingdoms plugin."

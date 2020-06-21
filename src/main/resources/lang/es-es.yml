@@ -1,0 +1,6 @@
+location:
+    lang:
+        set: "El juego está ahora en español (España)."
+    command:
+        root: "Comando base del plugin Hipogriff Kingdoms."
+        evaluate: "Este comando solo tiene el proposito de hacer pruebas."
