@@ -26,7 +26,8 @@ public class MenuIcon {
         if (x < 0 || x >= 9 || y < 0 || y >= menu.getConfig().getRows()) throw new IconOutInventoryException("X: " + x + " Y: " + y + " is NOT a valid position.");
 
         String displayName = Text.getLocatedFormatted(menu.getConfig().getString("icons." + iconName + ".title") , menu.getPlugin().getLang());
-        List<String> lore = menu.getConfig().getStringList("icons." + iconName + ".description");
+        String lorePointer = menu.getConfig().getString("icons." + iconName + ".description");
+        List<String> lore = menu.getPlugin().getLang().getStringList(lorePointer);
         setMaterial(menu.getConfig().getString("icons." + iconName + ".item"));
         setX(menu.getConfig().getInt("icons." + iconName + ".x") - 1);
         setY(menu.getConfig().getInt("icons." + iconName + ".y") - 1);

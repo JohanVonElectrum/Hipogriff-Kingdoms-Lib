@@ -12,23 +12,23 @@ icons:
     kingdoms:
         item: "shield"
         title: "location.menu.navigation.icons.kingdoms.title"
-        description: "location.menu.navigation.icons.kingdoms.description"
+        description: "location.menu.navigation.icons.kingdoms.lore"
         x: 5
         y: 2
         click-actions:
             server: "kingdoms"
-    bedwars:
-        item: "white_bed"
-        title: "location.menu.navigation.icons.bedwars.title"
-        description: "location.menu.navigation.icons.bedwars.description"
+    fallentorches:
+        item: "campfire"
+        title: "location.menu.navigation.icons.fallentorches.title"
+        description: "location.menu.navigation.icons.fallentorches.lore"
         x: 3
         y: 4
         click-actions:
-            server: "bedwars"
+            server: "fallentorches"
     skyblock:
         item: "grass_block"
         title: "location.menu.navigation.icons.skyblock.title"
-        description: "location.menu.navigation.icons.skyblock.description"
+        description: "location.menu.navigation.icons.skyblock.lore"
         x: 4
         y: 4
         click-actions:
@@ -36,7 +36,7 @@ icons:
     skywars:
         item: "bow"
         title: "location.menu.navigation.icons.skywars.title"
-        description: "location.menu.navigation.icons.skywars.description"
+        description: "location.menu.navigation.icons.skywars.lore"
         x: 5
         y: 4
         click-actions:
@@ -44,7 +44,7 @@ icons:
     buildbattle:
         item: "bricks"
         title: "location.menu.navigation.icons.buildbattle.title"
-        description: "location.menu.navigation.icons.buildbattle.description"
+        description: "location.menu.navigation.icons.buildbattle.lore"
         x: 6
         y: 4
         click-actions:
@@ -52,7 +52,7 @@ icons:
     arcade:
         item: "snowball"
         title: "location.menu.navigation.icons.arcade.title"
-        description: "location.menu.navigation.icons.arcade.description"
+        description: "location.menu.navigation.icons.arcade.lore"
         x: 7
         y: 4
         click-actions:
@@ -69,7 +69,7 @@ icons:
     gardens:
         item: "nether_star"
         title: "location.menu.navigation.icons.gardens.title"
-        description: "location.menu.navigation.icons.gardens.description"
+        description: "location.menu.navigation.icons.gardens.lore"
         x: 1
         y: 6
         click-actions:
@@ -77,7 +77,7 @@ icons:
     all:
         item: "compass"
         title: "location.menu.navigation.icons.all.title"
-        description: "location.menu.navigation.icons.all.description"
+        description: "location.menu.navigation.icons.all.lore"
         x: 2
         y: 6
         click-actions:
@@ -85,7 +85,7 @@ icons:
     chests:
         item: "chest"
         title: "location.menu.navigation.icons.chests.title"
-        description: "location.menu.navigation.icons.chests.description"
+        description: "location.menu.navigation.icons.chests.lore"
         x: 8
         y: 6
         click-actions:
@@ -93,7 +93,7 @@ icons:
     bazar:
         item: "gold_nugget"
         title: "location.menu.navigation.icons.bazar.title"
-        description: "location.menu.navigation.icons.bazar.description"
+        description: "location.menu.navigation.icons.bazar.lore"
         enchants:
             arrow_infinite: 2
         flags: ["hide_enchants"]

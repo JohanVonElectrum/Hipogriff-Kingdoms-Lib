@@ -14,7 +14,7 @@ location:
                 kingdoms:
                     title: "Hipogriff Kingdoms"
                     lore: ["Un modo de juego innovador", "que te hará sentir un estilo", "de vida de fantasía medieval."]
-                bedwars:
+                fallentorches:
                     title: "Fallen Torches"
                     lore: ["Protege tu cama, solo o con tus compañeros", "y destruye las camas rivales con", "incréibles peleas para conseguir la victoria."]
                 skyblock:
@@ -24,23 +24,23 @@ location:
                     title: "SkyWars"
                     lore: ["Aprovecha tus escasos recursos", "para obtener la victoria."]
                 buildbattle:
-                    tittle: "Build Battle"
+                    title: "Build Battle"
                     lore: ["Construye en base a un tema sobre", "fantasía-medieval en tan solo 5 minutos", "junto a otras 15 personas, solo", "uno puede quedar como ganador"]
                 arcade:
-                    tittle: "Arcade"
+                    title: "Arcade"
                     lore: ["Múltiples modalidades para divertise:", "- Hide and seek", "- TNT Run", "- Pixel Painters", "- Escape the beast", "- Spleef", "- Murder Mystery", "- Tower Defense", "- TNT Tag", "- Party Games", "- Tower Wars", "- Capture The Wool"]
                 pvp:
-                    tittle: "PvP"
-                    lore: ["Míltiples modalidades para pelear en solo", "o a su vez junto o contra tus compañeros"]
+                    title: "PvP"
+                    lore: ["Múltiples modalidades para pelear en solo", "o a su vez junto o contra tus compañeros"]
                 gardens:
-                    tittle: "Gardens"
+                    title: "Gardens"
                     lore: ["Escoge el jardín a donde desees", "viajar para juntarte con tus amigos."]
                 all:
-                    tittle: "All Games"
+                    title: "All Games"
                     lore: ["Aquí encontrarás todas", "las modalidades de juego"]
                 chests:
-                    tittle: "Chests"
+                    title: "Chests"
                     lore: ["Compra o abre cajas para", "obtener artilugios"]
                 bazar:
-                    tittle: "Bazar"
+                    title: "Bazar"
                     lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos"]
