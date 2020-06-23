@@ -8,11 +8,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
 import tk.hipogriff.kingdoms.menu.action.MenuAction;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class InventoryMenu implements Listener {
@@ -88,11 +86,18 @@ public class InventoryMenu implements Listener {
 
         ClickType click = event.getClick();
         Inventory inv = event.getClickedInventory();
+
+        MenuIcon icon = config.getIcon(event.getSlot());
+        if (icon != null) {
+            for (MenuAction action: icon.getActions(MenuAction.ActionEvent.CLICK)) {
+                action.run(player);
+            }
+        }
     }
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        if (!event.getView().getTitle().equals(config.getTitle())) return;
+        if (!event.getView().getTitle().equals(config.getTitle()) && event.getReason() == InventoryCloseEvent.Reason.OPEN_NEW) return;
 
         Player player = (Player) event.getPlayer();
 

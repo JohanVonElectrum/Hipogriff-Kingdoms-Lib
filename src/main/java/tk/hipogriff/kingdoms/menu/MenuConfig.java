@@ -16,7 +16,7 @@ import java.util.List;
 public class MenuConfig extends AbstractFile {
 
     private HashMap<MenuAction.ActionEvent, ArrayList<MenuAction>> actions;
-    List<MenuIcon> icons = new ArrayList<>();
+    private HashMap<Integer, MenuIcon> icons = new HashMap<>();
 
     public MenuConfig(String name) {
         super("menu/" + name + ".yml");
@@ -27,7 +27,11 @@ public class MenuConfig extends AbstractFile {
     }
 
     public List<MenuIcon> getIcons() {
-        return icons;
+        return new ArrayList<MenuIcon>(icons.values());
+    }
+
+    public MenuIcon getIcon(int i) {
+        return icons.get(i);
     }
 
     public boolean load() {
@@ -46,10 +50,12 @@ public class MenuConfig extends AbstractFile {
     }
 
     private void loadAction(MenuAction.ActionEvent event, MenuAction action) {
-        actions.get(event).add(action);
+        if (actions.get(event) == null) actions.put(event, new ArrayList<>());
+        if (action != null) actions.get(event).add(action);
     }
 
     private void loadActions(MenuAction.ActionEvent event, String configSection, String... args) {
+        if (actions == null) actions = new HashMap<>();
         ConfigurationSection actions = getConfigurationSection(configSection);
         for (String key: actions.getKeys(false)) {
             String value = actions.getString(key);
@@ -81,7 +87,7 @@ public class MenuConfig extends AbstractFile {
         for (String iconName: config.getConfigurationSection("icons").getKeys(false)) {
             try {
                 MenuIcon icon = new MenuIcon(menu, iconName);
-                icons.add(icon);
+                icons.put(icon.getPos(), icon);
             } catch (IconOutInventoryException e) {
                 plugin.getLogger().severe(ChatColor.RED + iconName + "in" + getTitle() + " menu can NOT be loaded because: " + e.getMessage());
                 e.printStackTrace();

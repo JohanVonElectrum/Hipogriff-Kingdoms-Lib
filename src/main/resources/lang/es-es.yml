@@ -7,6 +7,22 @@ location:
     message:
         join: "Hola, %player%!"
     menu:
+        close:
+            title: "&3Cerrar el Menú"
+            lore: ["El menú se cerrará si", "clicas en este icono."]
+        all:
+            title: "All Games"
+            lore: ["Aquí encontrarás todas", "las modalidades de juego"]
+        bazar:
+            title: "Bazar"
+            lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos"]
+        chests:
+            title: "Chests"
+            lore: ["Compra o abre cajas para", "obtener artilugios"]
+        gardens:
+            title: "Gardens"
+            lore: ["Escoge el jardín a donde desees", "viajar para juntarte con tus amigos."]
+        navigation:
             title: "&3Modos de juego"
             lore: ["Aquí encontrarás los modos", "de juego más populares"]
             icons:
@@ -15,7 +31,7 @@ location:
                     lore: ["Un modo de juego innovador", "que te hará sentir un estilo", "de vida de fantasía medieval."]
                 fallentorches:
                     title: "Fallen Torches"
-                    lore: ["Protege tu cama, solo o con" "tus compañeros y destruye", "las camas rivales con", "incréibles peleas para", "conseguir la victoria."]
+                    lore: ["Protege tu cama, solo o con", "tus compañeros y destruye", "las camas rivales con", "incréibles peleas para", "conseguir la victoria."]
                 skyblock:
                     title: "SkyBlock"
                     lore: ["Comienza una nueva aventura en", "una isla flotante aprovechando", "al máximo tus escasos recursos", "para asegurar tu supervivencia.", "Visita a otra gente,", "coopera con ellos, comercia...", "Haz de tu isla un hogar para ti."]
@@ -27,7 +43,7 @@ location:
                     lore: ["Construye en base a un tema sobre", "fantasía-medieval en tan solo 5 minutos", "junto a otras 15 personas, solo", "uno puede quedar como ganador"]
                 arcade:
                     title: "Arcade"
-                    lore: ["Múltiples modalidades para divertise:", "- Hide and seek", "- TNT Run", "- Pixel Painters", "- Escape the beast", "- Spleef", "- Murder Mystery", "- Tower Defense", "- TNT Tag", "- Party Games", "- Speed Builders", "Paint Ball"]
+                    lore: ["Múltiples modalidades para divertirse:", "- Hide and seek", "- TNT Run", "- Pixel Painters", "- Escape the beast", "- Spleef", "- Murder Mystery", "- Tower Defense", "- TNT Tag", "- Party Games", "- Speed Builders", "Paint Ball"]
                 pvp:
                     title: "PvP"
                     lore: ["Múltiples modalidades para pelear en solo", "o a su vez junto o contra tus compañeros:", "- The Bridge", "- Medieval Pit", "- Capture The Wool", "- Arena", "- Tower Wars", "- Duels", "Team vs Team"]

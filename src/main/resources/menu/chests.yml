@@ -1,7 +1,7 @@
 #----------------#
 # 1 <= ROWS <= 6 #
 #----------------#
-rows: 6
+rows: 1
 title: "location.menu.chests.title"
 description: "location.menu.chests.description"
 open-actions:
@@ -9,11 +9,11 @@ open-actions:
 close-actions:
     sound: "entity.bat.hurt"
 icons:
-    icon1:
+    close:
         item: "barrier"
-        title: "location.menu.chests.icons.icon1.title"
-        description: "location.menu.chests.icons.icon1.description"
-        x: 1
+        title: "location.menu.close.title"
+        description: "location.menu.close.lore"
+        x: 5
         y: 1
         click-actions:
-            command: "say icon1"
+            close: "OPEN_NEW"

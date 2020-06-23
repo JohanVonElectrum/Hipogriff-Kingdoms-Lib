@@ -9,40 +9,55 @@ location:
     message:
         join: "Hello, %player%!"
     menu:
+        close:
+            title: "&3Close Menú"
+            lore: ["The menu will close if", "you click this icon."]
+        all:
+            title: "All Game modes"
+            lore: ["This is the complete", "list of game modes."]
+        bazar:
+            title: "Bazar"
+            lore: ["Buy objects with your coins", "or get into our shop in the web", "to get unique objects and gadgets."]
+        chests:
+            title: "Chests"
+            lore: ["Buy or open loot", "crates to get gadgets."]
+        gardens:
+            title: "Gardens"
+            lore: ["Select the garden that you want", "to go to join your friends."]
         navigation:
-            title: "&3Gamemodes"
-            description: "Gamemodes all together for you."
+            title: "&Game modes"
+            lore: ["This is the list of the",  "most popular game modes."]
             icons:
                 kingdoms:
                     title: "Hipogriff Kingdoms"
-                    description: "A new game mode, that will make you feel a fantasy-medieval lifestyle."
-                bedwars:
-                    title: "Hipogriff Kingdoms"
-                    description: "Protect your bed, alone or with your companions and destroy rival beds with incredible fights to achieve victory."
+                    lore: ["A new game mode", "that give you a", "medieval-fantasy lifestyle."]
+                fallentorches:
+                    title: "Fallen Torches"
+                    lore: ["Protect your torch, alone or with", "your companions and destroy", "rival's torches with", "incredible fights to", "get the victory."]
                 skyblock:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "SkyBlock"
+                    lore: ["Start a new adventure in", "a floating island making the", "most of your scarce materials", "to guarantee your survival.", "Visit other people,", "cooperate with them, trade...", "Make your island a home for you."]
                 skywars:
-                    title: "Hipogriff Kingdoms"
-                    description: "Take advantage of your scarce resources to obtain victory."
+                    title: "SkyWars"
+                    lore: ["Make the most of your", "scarce materials to win."]
                 buildbattle:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "Build Battle"
+                    lore: ["Build on a fantasy-medieval", "theme in just 5 minutes", "with 15 other people"]
                 arcade:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "Arcade"
+                    lore: ["Multiple ways to have fun:", "- Hide and seek", "- TNT Run", "- Pixel Painters", "- Escape the beast", "- Spleef", "- Murder Mystery", "- Tower Defense", "- TNT Tag", "- Party Games", "- Speed Builders", "Paint Ball"]
                 pvp:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "PvP"
+                    lore: ["Multiple modalities to fight alone", "or together/against your teammates:", "- The Bridge", "- Medieval Pit", "- Capture The Wool", "- Arena", "- Tower Wars", "- Duels", "Team vs Team"]
                 gardens:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "Gardens"
+                    lore: ["Select the garden that you want", "to go to join your friends."]
                 all:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "All Games"
+                    lore: ["This is the complete", "list of game modes."]
                 chests:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "Chests"
+                    lore: ["Buy or open loot", "crates to get gadgets."]
                 bazar:
-                    title: "Hipogriff Kingdoms"
-                    description: "Gamemode that will make you feel a medieval-fantasy lifestyle."
+                    title: "Bazar"
+                    lore: ["Buy objects with your coins", "or get into our shop in the web", "to get unique objects and gadgets."]
