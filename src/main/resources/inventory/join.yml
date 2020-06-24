@@ -1,0 +1,77 @@
+open-actions:
+    sound: ""
+close-actions:
+    sound: ""
+icons:
+    navigation:
+        item: "compass"
+        type: "static"
+        title: "location.inventory.join.navigation.title"
+        description: "location.inventory.join.navigation.lore"
+        x: 1
+        y: 1
+        click-actions:
+            menu: "navigation"
+    collectibles:
+        item: "ender_chest"
+        type: "static"
+        title: "location.inventory.join.collectibles.title"
+        description: "location.inventory.join.collectibles.lore"
+        x: 2
+        y: 1
+        click-actions:
+            menu: "collectibles"
+    visibility:
+        item: ["red_stained_glass_pane", "lime_stained_glass_pane"]
+        type: "toggle"
+        title: ["location.inventory.join.visibility.0.title", "location.inventory.join.visibility.1.title"]
+        description: ["location.inventory.join.visibility.0.lore", "location.inventory.join.visibility.1.lore"]
+        x: 3
+        y: 1
+        state: true
+        click-actions:
+            toggle: "state"
+    bazar:
+        item: "gold_nugget"
+        type: "static"
+        title: "location.inventory.join.bazar.title"
+        description: "location.inventory.join.bazar.lore"
+        enchants:
+            arrow_infinite: 2
+        flags: ["hide_enchants"]
+        x: 5
+        y: 1
+        click-actions:
+            menu: "bazar"
+    profile:
+        item: "player_head"
+        type: "static"
+        title: "location.inventory.join.profile.title"
+        description: "location.inventory.join.profile.lore"
+        meta:
+            skullowner: "%player.displayName%"
+        x: 7
+        y: 1
+        click-actions:
+            menu: "profile"
+    updates:
+        item: "book"
+        type: "static"
+        title: "location.inventory.join.updates.title"
+        description: "location.inventory.join.updates.lore"
+        enchants:
+            arrow_infinite: 2
+        flags: ["hide_enchants"]
+        x: 8
+        y: 1
+        click-actions:
+            book: "updates"
+    gardens:
+        item: "nether_star"
+        type: "static"
+        title: "location.inventory.join.gardens.title"
+        description: "location.inventory.join.gardens.lore"
+        x: 9
+        y: 1
+        click-actions:
+            menu: "gardens"

@@ -16,4 +16,4 @@ icons:
         x: 5
         y: 1
         click-actions:
-            close: "OPEN_NEW"
+            close: "PLAYER"

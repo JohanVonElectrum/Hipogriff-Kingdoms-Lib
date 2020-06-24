@@ -11,24 +11,24 @@ location:
             title: "&3Cerrar el Menú"
             lore: ["El menú se cerrará si", "clicas en este icono."]
         all:
-            title: "All Games"
-            lore: ["Aquí encontrarás todas", "las modalidades de juego"]
+            title: "&3Todos los modos"
+            lore: ["Aquí encontrarás todas", "las modalidades de juego."]
         bazar:
-            title: "Bazar"
-            lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos"]
+            title: "&3Bazar"
+            lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos."]
         chests:
-            title: "Chests"
-            lore: ["Compra o abre cajas para", "obtener artilugios"]
+            title: "&3Cofres"
+            lore: ["Compra o abre cajas para", "obtener artilugios."]
         gardens:
-            title: "Gardens"
+            title: "&3Jardines"
             lore: ["Escoge el jardín a donde desees", "viajar para juntarte con tus amigos."]
         navigation:
             title: "&3Modos de juego"
-            lore: ["Aquí encontrarás los modos", "de juego más populares"]
+            lore: ["Aquí encontrarás los modos", "de juego más populares."]
             icons:
                 kingdoms:
                     title: "Hipogriff Kingdoms"
-                    lore: ["Un modo de juego innovador", "que te hará sentir un estilo", "de vida de fantasía medieval."]
+                    lore: ["Un modo de juego innovador que te", "hará sentir un estilo de vida", "de fantasía medieval."]
                 fallentorches:
                     title: "Fallen Torches"
                     lore: ["Protege tu cama, solo o con", "tus compañeros y destruye", "las camas rivales con", "incréibles peleas para", "conseguir la victoria."]
@@ -40,7 +40,7 @@ location:
                     lore: ["Aprovecha tus escasos recursos", "para obtener la victoria."]
                 buildbattle:
                     title: "Build Battle"
-                    lore: ["Construye en base a un tema sobre", "fantasía-medieval en tan solo 5 minutos", "junto a otras 15 personas, solo", "uno puede quedar como ganador"]
+                    lore: ["Construye en base a un tema sobre", "fantasía-medieval en tan solo 5 minutos", "junto a otras 15 personas, solo", "uno puede quedar como ganador."]
                 arcade:
                     title: "Arcade"
                     lore: ["Múltiples modalidades para divertirse:", "- Hide and seek", "- TNT Run", "- Pixel Painters", "- Escape the beast", "- Spleef", "- Murder Mystery", "- Tower Defense", "- TNT Tag", "- Party Games", "- Speed Builders", "Paint Ball"]
@@ -52,10 +52,38 @@ location:
                     lore: ["Escoge el jardín a donde desees", "viajar para juntarte con tus amigos."]
                 all:
                     title: "All Games"
-                    lore: ["Aquí encontrarás todas", "las modalidades de juego"]
+                    lore: ["Aquí encontrarás todas", "las modalidades de juego."]
                 chests:
                     title: "Chests"
-                    lore: ["Compra o abre cajas para", "obtener artilugios"]
+                    lore: ["Compra o abre cajas para", "obtener artilugios."]
                 bazar:
                     title: "Bazar"
-                    lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos"]
+                    lore: ["Compra objetos a cambio de monedas", "o entra en nuestra página web", "para comprar objetos únicos."]
+    inventory:
+        join:
+            icons:
+                navigation:
+                    title: "&eModos de juego"
+                    lore: ["Aquí encontrarás los modos", "de juego más populares."]
+                collectibles:
+                    title: "&eColeccionables"
+                    lore: ["Hazte con todos los coleccionables", "de Hipogriff Kingdoms y visita", "el bazar para comprar", "coleccionables únicos."]
+                visibility:
+                    0:
+                        title: "&eVisibilidad: &aActivada"
+                        lore: ["Desactiva la visibilidad de", "jugadores desconocidos."]
+                    1:
+                        title: "&eVisibilidad: &cDesactivada"
+                        lore: ["Activa la visibilidad de", "jugadores desconocidos."]
+                bazar:
+                    title: "&eBazar"
+                    lore: ["Compra objetos a cambio de monedas", "o su vez entra en nuestra página web", "para comprar objetos únicos."]
+                profile:
+                    title: "&ePerfil"
+                    lore: ["Mira tus estadísticas, logros," "misiones, cambia tu idioma..."]
+                updates:
+                    title: "&eActualizaciones"
+                    lore: ["Dale un vistazo a los", "cambios más recientes."]
+                gardens:
+                    title: "&eJardines"
+                    lore: ["Escoge el jardín a donde desees", "viajar para juntarte con tus amigos."]
