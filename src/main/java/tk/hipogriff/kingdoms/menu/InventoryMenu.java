@@ -1,23 +1,25 @@
 package tk.hipogriff.kingdoms.menu;
 
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
-import tk.hipogriff.kingdoms.menu.action.MenuAction;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class InventoryMenu implements Listener {
 
+    public enum MenuState {
+        OPEN,
+        CLOSE,
+        REDIRECT
+    }
+
     private HipogriffKingdoms plugin;
     private MenuConfig config;
     private Inventory inv;
+    private MenuState state;
 
     public HipogriffKingdoms getPlugin() {
         return plugin;
@@ -43,6 +45,14 @@ public class InventoryMenu implements Listener {
         this.inv = inv;
     }
 
+    public MenuState getState() {
+        return state;
+    }
+
+    public void setState(MenuState state) {
+        this.state = state;
+    }
+
     public InventoryMenu(MenuConfig config) {
         this.plugin = HipogriffKingdoms.getInstance();
         this.config = config;
@@ -60,50 +70,11 @@ public class InventoryMenu implements Listener {
             inv.setItem(icon.getX() + icon.getY() * 9, icon.getItemStack(icon.getCount()));
         }
 
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
         return true;
     }
 
     public void display(Player player) {
         player.openInventory(inv);
-    }
-
-    @EventHandler
-    public void onInventoryOpen(InventoryOpenEvent event) {
-        if (!event.getView().getTitle().equals(config.getTitle())) return;
-
-        Player player = (Player) event.getPlayer();
-
-        for (MenuAction action: config.getActions(MenuAction.ActionEvent.OPEN)) {
-            action.run(player);
-        }
-    }
-
-    @EventHandler
-    public void onInventoryClickItem(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals(config.getTitle())) return;
-        Player player = (Player) event.getWhoClicked();
-
-        ClickType click = event.getClick();
-        Inventory inv = event.getClickedInventory();
-
-        MenuIcon icon = config.getIcon(event.getSlot());
-        if (icon != null) {
-            for (MenuAction action: icon.getActions(MenuAction.ActionEvent.CLICK)) {
-                action.run(player);
-            }
-        }
-    }
-
-    @EventHandler
-    public void onInventoryClose(InventoryCloseEvent event) {
-        if (!event.getView().getTitle().equals(config.getTitle()) && event.getReason() == InventoryCloseEvent.Reason.OPEN_NEW) return;
-
-        Player player = (Player) event.getPlayer();
-
-        for (MenuAction action: config.getActions(MenuAction.ActionEvent.CLOSE)) {
-            action.run(player);
-        }
     }
 
 }

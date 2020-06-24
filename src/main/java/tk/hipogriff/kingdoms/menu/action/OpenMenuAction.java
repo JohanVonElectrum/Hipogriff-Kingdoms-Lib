@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
 import tk.hipogriff.kingdoms.menu.InventoryMenu;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 public class OpenMenuAction extends MenuAction {
 
@@ -23,6 +24,6 @@ public class OpenMenuAction extends MenuAction {
             close.run(player);
             menu.display(player);
         }
-        else HipogriffKingdoms.getInstance().getLogger().severe(ChatColor.RED + "Menu " + menuName + " do NOT exists.");
+        else Logger.severe("Menu " + menuName + " do NOT exists.");
     }
 }

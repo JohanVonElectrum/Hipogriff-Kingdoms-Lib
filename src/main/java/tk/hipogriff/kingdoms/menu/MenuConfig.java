@@ -7,6 +7,7 @@ import tk.hipogriff.kingdoms.exception.IconOutInventoryException;
 import tk.hipogriff.kingdoms.lang.Text;
 import tk.hipogriff.kingdoms.menu.action.MenuAction;
 import tk.hipogriff.kingdoms.utils.EnumUtils;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -77,10 +78,10 @@ public class MenuConfig extends AbstractFile {
     public boolean loadIcons(InventoryMenu menu) {
 
         if (config == null) {
-            plugin.getLogger().severe(ChatColor.RED + getTitle() + " menu config can NOT be loaded!");
+            Logger.severe(getTitle() + " menu config can NOT be loaded!");
             return  false;
         } else if (config.getConfigurationSection("icons") == null) {
-            plugin.getLogger().severe(ChatColor.RED + getTitle() + " menu icons can NOT be loaded!");
+            Logger.severe(getTitle() + " menu icons can NOT be loaded!");
             return false;
         }
 
@@ -89,7 +90,7 @@ public class MenuConfig extends AbstractFile {
                 MenuIcon icon = new MenuIcon(menu, iconName);
                 icons.put(icon.getPos(), icon);
             } catch (IconOutInventoryException e) {
-                plugin.getLogger().severe(ChatColor.RED + iconName + "in" + getTitle() + " menu can NOT be loaded because: " + e.getMessage());
+                Logger.severe(iconName + "in" + getTitle() + " menu can NOT be loaded because: " + e.getMessage());
                 e.printStackTrace();
             }
         }

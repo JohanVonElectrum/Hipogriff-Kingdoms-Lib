@@ -5,6 +5,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class AbstractFile extends YamlConfiguration {
                 }
             }
         } catch (IOException e) {
-            plugin.getLogger().severe(ChatColor.RED + file.getAbsolutePath() + " can NOT be created!");
+            Logger.file(file, Logger.FileType.UNKNOWN, Logger.TaskState.ERROR, false);
             e.printStackTrace();
             return false;
         }
@@ -60,11 +61,11 @@ public class AbstractFile extends YamlConfiguration {
         try {
             load(file);
         } catch (IOException e) {
-            plugin.getLogger().severe(ChatColor.RED + file.getAbsolutePath() + " can NOT be loaded!");
+            Logger.file(file, Logger.FileType.UNKNOWN, Logger.TaskState.ERROR, false);
             e.printStackTrace();
             return false;
         } catch (InvalidConfigurationException e) {
-            plugin.getLogger().severe(ChatColor.RED + file.getAbsolutePath() + " have an invalid configuration!");
+            Logger.file(file, Logger.FileType.UNKNOWN, Logger.TaskState.ERROR, false);
             e.printStackTrace();
             return false;
         }
@@ -77,7 +78,7 @@ public class AbstractFile extends YamlConfiguration {
         try {
             config.save(file);
         } catch (IOException e) {
-            plugin.getLogger().severe(ChatColor.RED + file.getAbsolutePath() + " can NOT be saved!");
+            Logger.file(file, Logger.FileType.UNKNOWN, Logger.TaskState.ERROR, false);
             e.printStackTrace();
             return false;
         }

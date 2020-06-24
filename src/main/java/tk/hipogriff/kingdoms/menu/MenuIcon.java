@@ -11,6 +11,7 @@ import tk.hipogriff.kingdoms.exception.IconOutInventoryException;
 import tk.hipogriff.kingdoms.lang.Text;
 import tk.hipogriff.kingdoms.menu.action.MenuAction;
 import tk.hipogriff.kingdoms.utils.EnumUtils;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class MenuIcon {
     private String path;
 
     public MenuIcon(InventoryMenu menu, String iconName) throws IconOutInventoryException {
-        menu.getPlugin().getLogger().info(ChatColor.AQUA + iconName + " menu icon is loading...");
+        Logger.info(ChatColor.AQUA + iconName + " menu icon is loading...");
         if (x < 0 || x >= 9 || y < 0 || y >= menu.getConfig().getRows()) throw new IconOutInventoryException("X: " + x + " Y: " + y + " is NOT a valid position.");
 
         this.menu = menu;

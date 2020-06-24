@@ -1,12 +1,16 @@
 package tk.hipogriff.kingdoms;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.hipogriff.kingdoms.command.Commands;
 import tk.hipogriff.kingdoms.config.PluginConfig;
+import tk.hipogriff.kingdoms.event.Events;
 import tk.hipogriff.kingdoms.lang.Lang;
 import tk.hipogriff.kingdoms.menu.InventoryMenu;
 import tk.hipogriff.kingdoms.menu.MenuConfig;
+import tk.hipogriff.kingdoms.player.HipogriffPlayer;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 import java.io.File;
 import java.util.HashMap;
@@ -32,27 +36,36 @@ public final class HipogriffKingdoms extends JavaPlugin {
     public HashMap<String, InventoryMenu> getMenus() {
         return menus;
     }
+    public InventoryMenu getMenuByTitle(String title) {
+        for (InventoryMenu menu: menus.values()) {
+            if (menu.getConfig().getTitle().equals(title)) return menu;
+        }
+        return null;
+    }
 
     @Override
     public void onEnable() {
         loadConfig();
         loadLang();
         loadMenus();
+        loadEvents();
+        loadPlayers();
 
         commands = new Commands(this);
 
-        getLogger().info(ChatColor.GREEN + "\n\n" + this.getName() + " has been ENABLED\n\n");
+        Logger.finished("\n\n" + this.getName() + " has been ENABLED\n\n");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info(ChatColor.RED + "\n\n" + this.getName() + " has been DISABLED\n\n");
+        Logger.severe("\n\n" + this.getName() + " has been DISABLED\n\n");
     }
 
     public void loadConfig() {
         if (!getDataFolder().exists()) {
+            Logger.file(getDataFolder(), Logger.FileType.FOLDER, Logger.TaskState.CREATING, true);
             getDataFolder().mkdir();
-            getLogger().info(ChatColor.AQUA + "\n\n" + getDataFolder() + " has been CREATED\n\n");
+            Logger.file(getDataFolder(), Logger.FileType.FOLDER, Logger.TaskState.CREATED, true);
         }
 
         getConfig().options().copyDefaults();
@@ -60,38 +73,32 @@ public final class HipogriffKingdoms extends JavaPlugin {
 
         config = new PluginConfig();
         if (config.load()) {
-            getLogger().info(ChatColor.GREEN + "config loaded");
+            Logger.finished("Config loaded.");
         }
     }
 
     public void loadLang() {
         lang = new Lang();
         if (lang.load()) {
-            getLogger().info(ChatColor.GREEN + "lang loaded with " + lang.getCode());
-            getLogger().info(ChatColor.AQUA + "lang selected: " + lang.getLocated("location.lang.set"));
+            Logger.finished("lang loaded with " + lang.getCode());
+            Logger.finished("lang selected: " + lang.getLocated("location.lang.set"));
         }
     }
 
     public void loadMenu(File file) {
-        getLogger().info(ChatColor.AQUA + "loading file: " + file.getAbsolutePath());
+        Logger.file(file, Logger.FileType.MENU, Logger.TaskState.LOADING, false);
         MenuConfig menu = new MenuConfig(file);
         if (menu.load()) {
             menus.put(menu.getFile().getName(), new InventoryMenu(menu));
-            getLogger().info(ChatColor.AQUA + menu.getFile().getName() + " menu have been loaded!");
+            Logger.file(file, Logger.FileType.MENU, Logger.TaskState.LOADED, false);
         } else {
-            getLogger().severe(ChatColor.RED + menu.getFile().getName() + " menu can NOT be loaded!");
+            Logger.file(file, Logger.FileType.MENU, Logger.TaskState.ERROR, false);
         }
     }
 
     public void loadMenu(String menuName) {
-        getLogger().info(ChatColor.AQUA + "loading file: menu/" + menuName + ".yml");
-        MenuConfig menu = new MenuConfig(menuName);
-        if (menu.load()) {
-            menus.put(menu.getFile().getName(), new InventoryMenu(menu));
-            getLogger().info(ChatColor.AQUA + menu.getFile().getName() + " menu have been loaded!");
-        } else {
-            getLogger().severe(ChatColor.RED + menu.getFile().getName() + " menu can NOT be loaded!");
-        }
+        File file = new File(HipogriffKingdoms.getInstance().getDataFolder(), "menu/" + menuName + ".yml");
+        loadMenu(file);
     }
 
     public void loadMenus() {
@@ -104,6 +111,16 @@ public final class HipogriffKingdoms extends JavaPlugin {
         List<String> defaultMenus = config.getStringList("default.menus");
         for (String menuName: defaultMenus) {
             if (!menus.containsKey(menuName + ".yml")) loadMenu(menuName);
+        }
+    }
+
+    public void loadEvents() {
+        getServer().getPluginManager().registerEvents(new Events(), this);
+    }
+
+    public void loadPlayers() {
+        for (Player player: getServer().getOnlinePlayers()) {
+            HipogriffPlayer hipogriffPlayer = new HipogriffPlayer(player);
         }
     }
 }

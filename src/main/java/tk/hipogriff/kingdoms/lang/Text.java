@@ -2,6 +2,7 @@ package tk.hipogriff.kingdoms.lang;
 
 import org.bukkit.ChatColor;
 import tk.hipogriff.kingdoms.HipogriffKingdoms;
+import tk.hipogriff.kingdoms.utils.Logger;
 
 import java.util.List;
 
@@ -15,15 +16,15 @@ public class Text {
 
         String located = lang.getLocated(input);
 
-        if (located == null) HipogriffKingdoms.getInstance().getLogger().severe(ChatColor.RED + input + " can NOT be located!");
-        if (located == "") HipogriffKingdoms.getInstance().getLogger().warning(ChatColor.GOLD + input + " location is empty!");
+        if (located == null) Logger.severe(input + " can NOT be located!");
+        if (located == "") Logger.warning(input + " location is empty!", false);
 
         return located;
     }
 
     public static String getFormatted(String input) {
         if (input == null || input.equals("")) {
-            HipogriffKingdoms.getInstance().getLogger().severe(ChatColor.RED + input + " can NOT be formatted because is null or empty!");
+            Logger.severe(input + " can NOT be formatted because is null or empty!");
             return "";
         }
 
